@@ -59,25 +59,43 @@ searchField.addEventListener("input", function () {
 
                 const /**{Node List} | [] */ items = [];
 
+                // for (const { name, lat, lon, country, state } of locations) {
+                //     const searchItem = document.createElement("li");
+                //     searchItem.classList.add("view-item");
+
+                //     searchItem.innerHTML = `
+                //     <span class="m-icon">location_on</span>
+
+                //         <div>
+                //         <p class="item-title">${name}</p>
+                //         <p class="label-2 item-subtitle">${state || ""} ${country} </p>
+                //         </div>
+
+                //         <a href="#/weather?lat=${lat}&lon=${lon}" class="item-link has-state" aria-label="${name} weather" data-search-toggler></a>
+                //     `;
+
+                //     searchReasult.querySelector("[data-search-list]").appendChild(searchItem);
+                //     items.push(searchItem.querySelector("[data-search-toggle]"));
+                // }
+
                 for (const { name, lat, lon, country, state } of locations) {
                     const searchItem = document.createElement("li");
                     searchItem.classList.add("view-item");
 
                     searchItem.innerHTML = `
-                    <span class="m-icon">location_on</span>
-
-                        <div>
-                        <p class="item-title">${name}</p>
-                        <p class="label-2 item-subtitle">${state || ""} ${country} </p>
-                        </div>
-
-                        <a href="#/weather?lat=${lat}&lon=${lon}" class="item-link has-state" aria-label="${name} weather" data-search-toggler></a>
-                    `;
+                     <span class="m-icon">location_on</span>
+                         <div>
+                         <p class="item-title">${name}</p>
+                         <p class="label-2 item-subtitle">${state || ""} ${country} </p>
+                         </div>
+                         <a href="#/weather?lat=${lat}&lon=${lon}" class="item-link has-state" aria-label="${name} weather" data-search-toggler></a>
+                     `;
 
                     searchReasult.querySelector("[data-search-list]").appendChild(searchItem);
-                    items.push(searchItem.querySelector("[data-search-toggle]"));
+                    const link = searchItem.querySelector("[data-search-toggler]");
+                    if (link) items.push(link);
                 }
-
+                
                 addEventOnElements(items, "click", function () {
                     toggleSearch();
                     searchReasult.classList.remove("active");
@@ -441,8 +459,15 @@ export const updateWeather = function (lat, lon) {
 
         });
 
-    });
+    }
+    )
+        // console.log(currentWeather)
+
+        ;
+
+
 
 }
+console.log(updateWeather)
 
 export const error404 = () => errorContent.style.display = "flex";

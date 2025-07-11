@@ -63,7 +63,7 @@ export const getTime = function (timeUnix, timezone) {
 /**
  * @param {number} timeUnix Unix data in seconds
  * @param {number} timezone Timezone shift from UTC in seconds
- * @returns {string} Time string. formate: "HH AM/PM"
+ * @returns {string} Time string. formate: "HH AM/PM" 
  */
 
 export const getHours = function (timeUnix, timezone) {
